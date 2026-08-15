@@ -5,7 +5,20 @@
 
   A lightweight Fabric mod for NoRisk Client that unlocks all cosmetics, emotes, badges, and NRC+ perks.
 
-  [**Download .jar**](releases/norisk-cosmetics-unlocker-1.0.3.jar) • [**Installation**](#installation) • [**Commands**](#commands)
+  [**Download .jar**](releases/norisk-cosmetics-unlocker-1.0.3.jar) • [**Installation**](#installation) • [**Commands**](#commands) • [**Screenshots**](#screenshots)
+</div>
+
+---
+
+## Screenshots
+
+<div align="center">
+  <img src="screenshots/showcase.png" width="48%" alt="In-Game Showcase" />
+  <img src="screenshots/icons.png" width="48%" alt="Icons & Badges" />
+</div>
+<div align="center" style="margin-top: 10px;">
+  <img src="screenshots/wardrobe.png" width="48%" alt="Cosmetics Selection" />
+  <img src="screenshots/featured.png" width="48%" alt="Featured & Emotes" />
 </div>
 
 ---

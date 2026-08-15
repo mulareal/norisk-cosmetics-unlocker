@@ -1,102 +1,47 @@
 <div align="center">
+  <img src="icon.png" width="128" height="128" alt="Logo" />
 
-<img src="icon.png" width="160" height="160" alt="NoRisk Cosmetics Unlocker Logo" style="border-radius: 24px;" />
+  # NoRisk Cosmetics Unlocker
 
-# 👑 NoRisk Cosmetics Unlocker
+  A lightweight Fabric mod for NoRisk Client that unlocks all cosmetics, emotes, badges, and NRC+ perks.
 
-**Die ultimative All-in-One Client-Mod zur vollständigen Freischaltung aller NoRisk Client Cosmetics, Emotes, Kronen und NRC+ Perks.**
-
-[![Release](https://img.shields.io/badge/Release-v1.0.3-blue.svg?style=for-the-badge)](https://github.com/)
-[![Minecraft](https://img.shields.io/badge/Minecraft-26.2%20%2F%201.21.x-brightgreen.svg?style=for-the-badge)](https://fabricmc.net/)
-[![Loader](https://img.shields.io/badge/Loader-Fabric-orange.svg?style=for-the-badge)](https://fabricmc.net/)
-[![License](https://img.shields.io/badge/License-MIT-purple.svg?style=for-the-badge)](LICENSE)
-
-[📥 **Download Latest (.JAR)**](releases/norisk-cosmetics-unlocker-1.0.3.jar) • [📖 **Installation**](#-installation) • [⚡ **Befehle**](#-in-game-befehle)
-
+  [**Download .jar**](releases/norisk-cosmetics-unlocker-1.0.3.jar) • [**Installation**](#installation) • [**Commands**](#commands)
 </div>
 
 ---
 
-## ✨ Features im Überblick
+## Features
+- **All Cosmetics**: Unlocks all wings, capes, halos, hats, masks, pets, and tails in the wardrobe.
+- **All Emotes**: Full access to all emotes with multiplayer sync.
+- **All Badges & Crowns**: Choose from all 23 nametag icons.
+- **NRC+ Perks**: Custom crosshair editor, projectile particle trails, and nametag formatting.
 
-### 🦸 1. 100% aller 3D-Cosmetics & Kleiderschrank
-* **🪽 Wings**: Alle Flügel (Drachen-, Engels-, Feenflügel etc.)
-* **🦸 Capes**: Alle Umhänge inklusive Partner- und Custom-Designs
-* **😇 Halos**: Schwebende Heiligenscheine & Kronen
-* **🎩 Hüte & Mützen**: Zylinder, Caps, Bandanas & Kopfschmuck
-* **👓 Brillen & Masken**: VR-Headsets, Sonnenbrillen & Masken
-* **🦊 Tails**: Fuchs-, Katzen- und Dämonen-Schwänze
-* **🎒 Back-Items**: Rucksäcke, Schwerter & Schilder auf dem Rücken
-* **🦜 Pets & Shoulder Pets**: Alle Begleiter und Schultertiere
-* **Unbegrenzte Outfits**: Erstelle und speichere beliebig viele Outfit-Kombinationen direkt im Kleiderschrank.
+## Installation
+1. Download [`norisk-cosmetics-unlocker-1.0.3.jar`](releases/norisk-cosmetics-unlocker-1.0.3.jar).
+2. Press `Win + R`, paste this path and press Enter:
+   ```
+   %APPDATA%\norisk\NoRiskClientV3\data\profiles\Fabric 26.2\mods
+   ```
+3. Put the `.jar` file into that folder.
+4. Restart your game.
 
-### 💃 2. Alle Emotes & Tänze (Echtzeit-Sync)
-* Vollständiger Zugriff auf alle Tänze & Animationen (*Default Dance, Floss, Wave, Dab etc.*).
-* **Multiplayer-Synchronisation**: Andere Spieler mit der Mod sehen deine Animationen in Echtzeit.
+## Commands
+Change your nametag icon anytime via chat:
 
-### 🏆 3. Alle 23 Nametag-Kronen, Badges & Ränge
-* 👑 **VIP Krone**
-* 🏆 **Gold Donator Krone**
-* 🥈 **Silver Donator Krone**
-* 🥉 **Bronze Donator Krone**
-* 🛠️ **Developer Badge**
-* 🛡️ **Admin Badge**
-* 🤝 **Partner Badge**
-* 🌟 **Special Rank Badge**
-* 🐛 **Bug Hunter Badge**
-* Wählbar direkt im **Icon Selector Menü** oder per Chat-Befehl `/nrcicon <name>`.
-
-### ⭐ 4. Vollständige NoRisk Plus (NRC+) Perks
-* 🎯 **Custom Crosshair Editor**: Eigene Fadenkreuze frei anpassen und nutzen.
-* ✨ **Projectile Particle Trails**: Eigene Partikeleffekte für Pfeile, Tränke und Enderperlen.
-* 🏷️ **Custom Nametags**: Farbverläufe, Namenstexte und Styles ohne Einschränkungen.
-* 🌟 **NRC+ Golden Glow & VIP Status**: Schaltet das goldene Plus-UI in allen Menüs frei.
-
----
-
-## 🚀 Installation
-
-Die Installation dauert weniger als 1 Minute:
-
-1. **Lade die neueste JAR-Datei herunter**:  
-   👉 [**norisk-cosmetics-unlocker-1.0.3.jar**](releases/norisk-cosmetics-unlocker-1.0.3.jar)
-2. **Öffne deinen NoRisk-Profilordner**:
-   * Drücke `Windows-Taste + R`
-   * Füge folgenden Pfad ein und drücke **Enter**:
-     ```text
-     %APPDATA%\norisk\NoRiskClientV3\data\profiles\Fabric 26.2\mods
-     ```
-3. **Füge die heruntergeladene `.jar`-Datei in diesen Ordner ein.**
-4. **Starte deinen NoRisk Client neu** – alle Cosmetics & Perks sind sofort aktiviert! 🎉
-
----
-
-## ⚡ In-Game Befehle
-
-| Befehl | Auswirkung |
+| Command | Icon |
 | :--- | :--- |
-| `/nrcicon` | Zeigt dein aktuelles Icon und alle Optionen an |
-| `/nrcicon vip` | 👑 VIP Krone |
-| `/nrcicon gold` | 🏆 Gold Donator Krone |
-| `/nrcicon silver` | 🥈 Silver Donator Krone |
-| `/nrcicon bronze` | 🥉 Bronze Donator Krone |
-| `/nrcicon dev` | 🛠️ Developer Badge |
-| `/nrcicon admin` | 🛡️ Admin Badge |
-| `/nrcicon partner` | 🤝 Partner Badge |
-| `/nrcicon special` | 🌟 Special Rank Badge |
-| `/nrcicon bug` | 🐛 Bug Hunter Badge |
-| `/nrcicon default` | ⚡ Standard NoRisk Logo |
+| `/nrcicon vip` | VIP Crown |
+| `/nrcicon gold` | Gold Donator Crown |
+| `/nrcicon silver` | Silver Donator Crown |
+| `/nrcicon bronze` | Bronze Donator Crown |
+| `/nrcicon dev` | Developer Badge |
+| `/nrcicon admin` | Admin Badge |
+| `/nrcicon partner` | Partner Badge |
+| `/nrcicon special` | Special Rank |
+| `/nrcicon bug` | Bug Hunter |
+| `/nrcicon default` | Default NoRisk Logo |
 
----
+Type `/nrcicon` to see your currently selected icon.
 
-## 🔒 Sicherheit & Schutz
-
-* **Code-Schutz**: Die Mod ist vorkompiliert, verschlüsselt und obfuskiert.
-* **Keine Token-Zugriffe**: Die Mod greift zu keinem Zeitpunkt auf Microsoft-, Minecraft- oder Launcher-Zugangsdaten zu.
-* **Client-seitig**: Läuft lokal über das Fabric-Mixin-System ohne externe Abhängigkeiten.
-
----
-
-## 📜 Lizenz
-
-Dieses Projekt steht unter der [MIT Lizenz](LICENSE).
+## License
+MIT

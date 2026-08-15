@@ -25,7 +25,7 @@
 
 ## Features
 - **All Cosmetics**: Unlocks all wings, capes, halos, hats, masks, pets, and tails in the wardrobe.
-- **All Emotes**: Full access to all emotes with multiplayer sync.
+- **All Emotes**: Full access to all emotes.
 - **All Badges & Crowns**: Choose from all 23 nametag icons.
 - **NRC+ Perks**: Custom crosshair editor, projectile particle trails, and nametag formatting.
 
@@ -39,7 +39,7 @@
 4. Restart your game.
 
 ## Commands
-Change your nametag icon anytime via chat:
+Change your nametag icon anytime via chat (or just use the ui):
 
 | Command | Icon |
 | :--- | :--- |

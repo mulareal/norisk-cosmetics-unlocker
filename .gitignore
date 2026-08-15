@@ -1,0 +1,17 @@
+# Protect source code from being added
+*.java
+*.kt
+*.class
+src/
+gradle/
+build/
+.gradle/
+*.iml
+.idea/
+.vscode/
+
+# Allowed release assets
+!icon.png
+!README.md
+!LICENSE
+!releases/*.jar

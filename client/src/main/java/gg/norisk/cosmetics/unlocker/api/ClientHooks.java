@@ -32,6 +32,9 @@ public final class ClientHooks {
     /** The local song cover was stored under this id (SHA-256 of the bytes). Any thread. */
     public static final HookList<BiConsumer<String, byte[]>> ARTWORK_SHARED = new HookList<>("artwork_shared");
 
+    /** A switch in the mod menu changed (see {@code ModSettings}). Client thread. */
+    public static final HookList<Runnable> SETTINGS_CHANGED = new HookList<>("settings_changed");
+
     /** Extra lines for {@code /nrcu status}. */
     public static final HookList<Consumer<List<Component>>> STATUS = new HookList<>("status");
 
@@ -53,6 +56,10 @@ public final class ClientHooks {
 
     public static void nametagChanged() {
         NAMETAG_CHANGED.fire(Runnable::run);
+    }
+
+    public static void settingsChanged() {
+        SETTINGS_CHANGED.fire(Runnable::run);
     }
 
     public static void localEmote(String emoteId, boolean playing) {

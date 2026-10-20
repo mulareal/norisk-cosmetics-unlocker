@@ -1,0 +1,12 @@
+{
+  "nrc.ui.modules.description.cosmetics_unlocker": "Schaltet alle Cosmetics, Emotes, Icons und NRC+ Nametags frei. Jeder Teil einzeln in den Einstellungen.",
+  "nrcu.setting.cosmetics.info": "Schaltet alle Cosmetics und Capes frei. Sehen können sie nur du und Spieler mit dieser Mod (Server Sync). Normale NoRisk-Spieler sehen deine echten Cosmetics.",
+  "nrcu.setting.emotes.info": "Alle Emotes gehen im Emote-Menü und im Rad. Rad und AFK-Emote werden auf deinem PC gespeichert, weil NoRisk nicht gekaufte Emotes bei jedem Start entfernt.",
+  "nrcu.setting.nrcPlus.info": "NRC+ Nametag-Effekte, Styles und die Extra-Nametag-Zeile ohne NRC+. Gespeichert auf deinem PC, nicht im NoRisk-Account.",
+  "nrcu.setting.icons.info": "Alle Custom Icons neben deinem Namen. Andere sehen sie nur mit dieser Mod.",
+  "nrcu.setting.textEffects.info": "Fügt Bounce, Glitch, Neon, Rainbow_wave und Sparks zu den Custom Nametag-Effekten hinzu. Nur Spieler mit dieser Mod sehen sie.",
+  "nrcu.setting.spotifyNametag.info": "Zeigt deinen Song im Nametag, auch wenn das Spotify-Overlay aus ist. Dafür muss \"Show your song\" in den NRC+ Einstellungen an sein.",
+  "nrcu.setting.songCovers.info": "Teilt dein Song-Cover über den Server statt über NoRisks NRC+ Upload, auch bei lokalen Dateien. Andere sehen es mit Server Sync.",
+  "nrcu.setting.shopCulling.info": "Shop- und Garderoben-Karten außerhalb des Bildes werden nicht gezeichnet. Ausschalten, falls Karten leer bleiben.",
+  "nrcu.setting.freezeWatchdog.info": "Hängt das Spiel 10 Sekunden, wird gespeichert, was jeder Thread gerade macht (logs/nrc-freeze-*.txt). Hilft, die Ursache zu finden."
+}

@@ -4,6 +4,8 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.lang.management.LockInfo;
+import gg.norisk.cosmetics.unlocker.settings.Features;
+
 import java.lang.management.ManagementFactory;
 import java.lang.management.MonitorInfo;
 import java.lang.management.ThreadInfo;
@@ -39,7 +41,7 @@ public final class FreezeWatchdog {
             try {
                 Thread.sleep(2000);
                 long tick = lastTick;
-                if (System.currentTimeMillis() - tick > STALL_MS && dumpedFor != tick) {
+                if (Features.FREEZE_WATCHDOG.on() && System.currentTimeMillis() - tick > STALL_MS && dumpedFor != tick) {
                     dumpedFor = tick;
                     dump();
                 }

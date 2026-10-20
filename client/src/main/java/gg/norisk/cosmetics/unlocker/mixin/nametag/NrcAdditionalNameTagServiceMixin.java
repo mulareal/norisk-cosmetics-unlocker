@@ -3,6 +3,7 @@ package gg.norisk.cosmetics.unlocker.mixin.nametag;
 import gg.norisk.compat.auth.NoriskAuth;
 import gg.norisk.compat.icon.NrcPlayerCache;
 import gg.norisk.cosmetics.unlocker.cosmetics.LocalOutfitStorage;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.cosmetics.v2.sync.NrcAdditionalNameTagService;
 import gg.norisk.networking.model.core.NoRiskUserMinimal;
 import gg.norisk.networking.model.cosmetics.AdditionalNameTag;
@@ -21,6 +22,7 @@ public class NrcAdditionalNameTagServiceMixin {
 
     @Inject(method = "apply", at = @At("HEAD"), cancellable = true, remap = false)
     private void nrc$applyAdditionalNameTagUnlocked(AdditionalNameTagUpdateRequest request, Function1<? super Throwable, Unit> onError, CallbackInfo ci) {
+        if (!Features.NRC_PLUS.on()) return;
         UUID uuid = LocalOutfitStorage.getLocalPlayerUuid();
         if (uuid != null) {
             NoRiskUserMinimal user = NrcPlayerCache.INSTANCE.getCached(uuid);

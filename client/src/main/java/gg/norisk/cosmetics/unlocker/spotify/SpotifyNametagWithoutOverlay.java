@@ -5,6 +5,7 @@ import gg.norisk.client.v2.modules.spotify.SpotifyMediaState;
 import gg.norisk.compat.auth.NoriskAuth;
 import gg.norisk.compat.spotify.SpotifyStatusCache;
 import gg.norisk.cosmetics.unlocker.Log;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.cosmetics.v2.NRCPlusModule;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
@@ -33,7 +34,7 @@ public final class SpotifyNametagWithoutOverlay {
         if (broken) return;
         try {
             SpotifyHud hud = SpotifyHud.INSTANCE;
-            boolean want = !hud.isEnabled() && hud.getShowInNameTag();
+            boolean want = Features.SPOTIFY_NAMETAG.on() && !hud.isEnabled() && hud.getShowInNameTag();
             if (want) {
                 if (!active) {
                     active = true;

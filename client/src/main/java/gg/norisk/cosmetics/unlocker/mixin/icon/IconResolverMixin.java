@@ -1,8 +1,8 @@
 package gg.norisk.cosmetics.unlocker.mixin.icon;
 
 import gg.norisk.compat.icon.IconResolver;
-import gg.norisk.cosmetics.unlocker.cosmetics.CosmeticsUnlocker;
 import gg.norisk.cosmetics.unlocker.cosmetics.LocalOutfitStorage;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.networking.model.core.NoRiskUserMinimal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
@@ -21,7 +21,7 @@ public abstract class IconResolverMixin {
 
     @Inject(method = "resolve", at = @At("HEAD"), cancellable = true, remap = false)
     private void overrideResolveIcon(NoRiskUserMinimal user, CallbackInfoReturnable<IconResolver.IconResult> cir) {
-        if (!CosmeticsUnlocker.isEnabled() || user == null) {
+        if (!Features.ICONS.on() || user == null) {
             return;
         }
 

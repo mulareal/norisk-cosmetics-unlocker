@@ -1,11 +1,16 @@
 package gg.norisk.cosmetics.unlocker;
 
 import gg.norisk.cosmetics.unlocker.api.ClientAddon;
+import gg.norisk.cosmetics.unlocker.api.ClientHooks;
 import gg.norisk.cosmetics.unlocker.compat.CompatCheck;
 import gg.norisk.cosmetics.unlocker.cosmetics.CosmeticsUnlocker;
 import gg.norisk.cosmetics.unlocker.cosmetics.LocalEmoteEvents;
 import gg.norisk.cosmetics.unlocker.cosmetics.LocalOutfitStorage;
+import gg.norisk.cosmetics.unlocker.settings.Features;
+import gg.norisk.cosmetics.unlocker.settings.ToggleModule;
+import gg.norisk.cosmetics.unlocker.settings.UnlockerModule;
 import gg.norisk.cosmetics.unlocker.spotify.SpotifyNametagWithoutOverlay;
+import gg.norisk.cosmetics.unlocker.texteffects.CustomTextEffects;
 import gg.norisk.compat.icon.NrcPlayerCache;
 import gg.norisk.cosmetics.v2.NRCPlusModule;
 import net.fabricmc.api.ClientModInitializer;
@@ -36,6 +41,7 @@ public class NoRiskCosmeticsClientMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         Log.info("Starting " + version());
+        Features.init();
         FreezeWatchdog.start();
 
         CompatCheck.require(
@@ -47,10 +53,13 @@ public class NoRiskCosmeticsClientMod implements ClientModInitializer {
 
         LocalEmoteEvents.init();
         SpotifyNametagWithoutOverlay.init();
+        CustomTextEffects.register();
         NrcCommands.register();
         ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> onJoin(client));
+        ClientHooks.SETTINGS_CHANGED.register(NoRiskCosmeticsClientMod::onSettingsChanged);
 
         loadAddons();
+        ToggleModule.register(new UnlockerModule());
     }
 
     /** Mod version from fabric.mod.json. */
@@ -72,6 +81,12 @@ public class NoRiskCosmeticsClientMod implements ClientModInitializer {
             Chat.send(Component.literal("§c[NRC] §fNoRisk-Update: " + issues.size() + " Hooks kaputt. ")
                     .append(Chat.command("§7[Details]", "/nrcu status")));
         }
+    }
+
+    /** A switch in the mod menu changed: rebuild what NoRisk caches from our data. */
+    private static void onSettingsChanged() {
+        CosmeticsUnlocker.refreshCache();
+        refreshNrcPlus();
     }
 
     private static void refreshNrcPlus() {

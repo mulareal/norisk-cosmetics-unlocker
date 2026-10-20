@@ -1,6 +1,6 @@
 package gg.norisk.cosmetics.unlocker.mixin.icon;
 
-import gg.norisk.cosmetics.unlocker.cosmetics.CosmeticsUnlocker;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.networking.model.cosmetics.CustomIcon;
 import gg.norisk.networking.model.cosmetics.CustomIconInfo;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +16,7 @@ public abstract class CustomIconInfoCompanionMixin {
 
     @Inject(method = "getICONS", at = @At("HEAD"), cancellable = true, remap = false)
     private void returnAllIcons(CallbackInfoReturnable<List<CustomIcon>> cir) {
-        if (CosmeticsUnlocker.isEnabled()) {
+        if (Features.ICONS.on()) {
             CustomIconInfo.Companion comp = CustomIconInfo.Companion;
             List<CustomIcon> all = new ArrayList<>();
             all.add(comp.getDEFAULT());

@@ -1,6 +1,6 @@
 package gg.norisk.cosmetics.unlocker.mixin.icon;
 
-import gg.norisk.cosmetics.unlocker.cosmetics.CosmeticsUnlocker;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.networking.model.cosmetics.CustomIcon;
 import gg.norisk.networking.model.cosmetics.CustomIconInfo;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +16,7 @@ public abstract class IconSelectorComponentMixin {
 
     @ModifyVariable(method = "buildIconEntry", at = @At("HEAD"), argsOnly = true, ordinal = 0, remap = false)
     private boolean unlockCustomIconEntry(boolean isOwned) {
-        if (CosmeticsUnlocker.isEnabled()) {
+        if (Features.ICONS.on()) {
             return true;
         }
         return isOwned;
@@ -24,7 +24,7 @@ public abstract class IconSelectorComponentMixin {
 
     @ModifyVariable(method = "build", at = @At(value = "STORE", ordinal = 0), remap = false)
     private List<UUID> forceAllOwnedIconsInBuild(List<UUID> ownedItems) {
-        if (CosmeticsUnlocker.isEnabled()) {
+        if (Features.ICONS.on()) {
             List<UUID> all = new ArrayList<>();
             if (ownedItems != null) {
                 all.addAll(ownedItems);

@@ -1,7 +1,7 @@
 package gg.norisk.cosmetics.unlocker.mixin.icon;
 
-import gg.norisk.cosmetics.unlocker.cosmetics.CosmeticsUnlocker;
 import gg.norisk.cosmetics.unlocker.cosmetics.LocalOutfitStorage;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.networking.model.core.NoRiskUserMinimal;
 import gg.norisk.networking.model.cosmetics.CustomIcon;
 import kotlin.jvm.functions.Function0;
@@ -19,7 +19,7 @@ public abstract class NrcCustomIconServiceMixin {
 
     @Inject(method = "selectIcon", at = @At("HEAD"), cancellable = true, remap = false)
     private void onSelectIcon(CustomIcon customIcon, Function0<Object> onSuccess, Function1<Throwable, Object> onError, CallbackInfo ci) {
-        if (CosmeticsUnlocker.isEnabled() && customIcon != null) {
+        if (Features.ICONS.on() && customIcon != null) {
             try {
                 LocalOutfitStorage.setActiveIconName(customIcon.getName());
                 

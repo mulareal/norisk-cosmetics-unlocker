@@ -1,5 +1,6 @@
 package gg.norisk.cosmetics.unlocker.mixin.unlock;
 
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.cosmetics.v2.ui.cosmetic.CosmeticShowcaseComponent;
 import gg.norisk.owolib.owo.ui.base.BaseUIComponent;
 import gg.norisk.owolib.owo.ui.core.OwoUIGraphics;
@@ -19,6 +20,7 @@ public abstract class CosmeticShowcaseComponentMixin extends BaseUIComponent {
      */
     @Inject(method = "draw", at = @At("HEAD"), cancellable = true)
     private void nrc$cullOffscreenCosmeticShowcase(OwoUIGraphics context, int mouseX, int mouseY, float partialTicks, float delta, CallbackInfo ci) {
+        if (!Features.SHOP_CULLING.on()) return;
         Minecraft mc = Minecraft.getInstance();
         if (mc == null || mc.getWindow() == null) return;
 

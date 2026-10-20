@@ -1,6 +1,6 @@
 package gg.norisk.cosmetics.unlocker.mixin.unlock;
 
-import gg.norisk.cosmetics.unlocker.cosmetics.CosmeticsUnlocker;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.cosmetics.v2.ui.IWardrobeContainer;
 import gg.norisk.cosmetics.v2.ui.ShopUtils;
 import gg.norisk.cosmetics.v2.ui.shop.ShopItemInfo;
@@ -18,14 +18,14 @@ public abstract class ShopUtilsMixin {
 
     @Inject(method = "isEffectivelyOwned", at = @At("HEAD"), cancellable = true, remap = false)
     private void unlockIsEffectivelyOwned(ShopItemInfo item, Collection<UUID> ownedItems, CallbackInfoReturnable<Boolean> cir) {
-        if (CosmeticsUnlocker.isEnabled()) {
+        if (Features.COSMETICS.on()) {
             cir.setReturnValue(true);
         }
     }
 
     @Inject(method = "canSeeShopItem", at = @At("HEAD"), cancellable = true, remap = false)
     private void unlockCanSeeShopItem(ShopItem shopItem, IWardrobeContainer shop, CallbackInfoReturnable<Boolean> cir) {
-        if (CosmeticsUnlocker.isEnabled()) {
+        if (Features.COSMETICS.on()) {
             cir.setReturnValue(true);
         }
     }

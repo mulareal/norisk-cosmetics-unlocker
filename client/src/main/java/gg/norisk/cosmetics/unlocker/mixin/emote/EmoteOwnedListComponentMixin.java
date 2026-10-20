@@ -1,7 +1,7 @@
 package gg.norisk.cosmetics.unlocker.mixin.emote;
 
 import gg.norisk.cosmetics.unlocker.Log;
-import gg.norisk.cosmetics.unlocker.cosmetics.CosmeticsUnlocker;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.cosmetics.v2.manager.NrcEmoteIndex;
 import gg.norisk.cosmetics.v2.model.NrcEmoteEntry;
 import gg.norisk.cosmetics.v2.ui.emote.EmoteOwnedListComponent;
@@ -18,7 +18,7 @@ public abstract class EmoteOwnedListComponentMixin {
 
     @ModifyVariable(method = "<init>(ILjava/util/List;Lgg/norisk/owolib/owo/ui/core/Sizing;Lgg/norisk/owolib/owo/ui/core/Sizing;)V", at = @At("HEAD"), argsOnly = true, ordinal = 0, remap = false)
     private static List<NrcEmoteEntry> unlockEmoteList(List<NrcEmoteEntry> emotes) {
-        if (CosmeticsUnlocker.isEnabled()) {
+        if (Features.EMOTES.on()) {
             try {
                 Collection<NrcEmoteEntry> all = NrcEmoteIndex.INSTANCE.allEntries();
                 if (all != null && !all.isEmpty()) {

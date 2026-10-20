@@ -3,6 +3,7 @@ package gg.norisk.cosmetics.unlocker.mixin.nametag;
 import gg.norisk.compat.icon.NrcPlayerCache;
 import gg.norisk.compat.icon.NrcUuidResolver;
 import gg.norisk.cosmetics.unlocker.cosmetics.LocalOutfitStorage;
+import gg.norisk.cosmetics.unlocker.settings.ModSettings;
 import gg.norisk.networking.model.core.NoRiskUserMinimal;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -68,7 +69,7 @@ public class NrcPlayerCacheMixin {
 
     @Inject(method = "getCached", at = @At("RETURN"), cancellable = true, remap = false)
     private void nrc$injectSavedNametag(UUID uuid, CallbackInfoReturnable<NoRiskUserMinimal> cir) {
-        if (uuid == null || nrc$UPDATING.get()) return;
+        if (uuid == null || nrc$UPDATING.get() || !ModSettings.ENABLED.on()) return;
         try {
             UUID real = nrc$resolveUuid(uuid);
             if (LocalOutfitStorage.isLocalPlayer(real) || LocalOutfitStorage.hasRemoteData(real)) {
@@ -99,7 +100,7 @@ public class NrcPlayerCacheMixin {
 
     @Inject(method = "addToCache", at = @At("HEAD"), cancellable = true, remap = false)
     private void nrc$preserveCustomNametagOnAdd(UUID uuid, NoRiskUserMinimal user, boolean notify, CallbackInfo ci) {
-        if (uuid == null || nrc$UPDATING.get()) return;
+        if (uuid == null || nrc$UPDATING.get() || !ModSettings.ENABLED.on()) return;
         try {
             UUID real = nrc$resolveUuid(uuid);
             if (LocalOutfitStorage.isLocalPlayer(real) || LocalOutfitStorage.hasRemoteData(real)) {

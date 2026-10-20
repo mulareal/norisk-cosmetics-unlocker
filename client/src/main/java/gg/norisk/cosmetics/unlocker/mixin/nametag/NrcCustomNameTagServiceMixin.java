@@ -1,6 +1,7 @@
 package gg.norisk.cosmetics.unlocker.mixin.nametag;
 
 import gg.norisk.cosmetics.unlocker.cosmetics.LocalOutfitStorage;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.cosmetics.v2.NRCPlusModule;
 import gg.norisk.cosmetics.v2.sync.NrcCustomNameTagService;
 import gg.norisk.networking.model.cosmetics.CustomNameTag;
@@ -19,6 +20,7 @@ public class NrcCustomNameTagServiceMixin {
 
     @Inject(method = "setAnimationsLocal", at = @At("HEAD"), cancellable = true, remap = false)
     private void nrc$setAnimationsLocalUnlocked(CustomNameTag nameTag, List<NameTagAnimationStyle> animations, CallbackInfo ci) {
+        if (!Features.NRC_PLUS.on()) return;
         if (nameTag != null && animations != null) {
             nameTag.setStyleId(null);
             nameTag.getAnimations().clear();
@@ -31,6 +33,7 @@ public class NrcCustomNameTagServiceMixin {
 
     @Inject(method = "setStyleIdLocal", at = @At("HEAD"), cancellable = true, remap = false)
     private void nrc$setStyleIdLocalUnlocked(CustomNameTag nameTag, String styleId, CallbackInfo ci) {
+        if (!Features.NRC_PLUS.on()) return;
         if (nameTag != null) {
             nameTag.setStyleId(styleId);
             nameTag.getAnimations().clear();
@@ -42,12 +45,14 @@ public class NrcCustomNameTagServiceMixin {
 
     @Inject(method = "setAnimations", at = @At("HEAD"), cancellable = true, remap = false)
     private void nrc$setAnimationsUnlocked(CustomNameTag nameTag, List<NameTagAnimationStyle> animations, Function1<? super Throwable, Unit> onError, CallbackInfo ci) {
+        if (!Features.NRC_PLUS.on()) return;
         NrcCustomNameTagService.INSTANCE.setAnimationsLocal(nameTag, animations);
         ci.cancel();
     }
 
     @Inject(method = "setStyleId", at = @At("HEAD"), cancellable = true, remap = false)
     private void nrc$setStyleIdUnlocked(CustomNameTag nameTag, String styleId, Function1<? super Throwable, Unit> onError, CallbackInfo ci) {
+        if (!Features.NRC_PLUS.on()) return;
         NrcCustomNameTagService.INSTANCE.setStyleIdLocal(nameTag, styleId);
         ci.cancel();
     }

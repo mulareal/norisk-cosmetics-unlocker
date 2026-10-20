@@ -2,6 +2,7 @@ package gg.norisk.cosmetics.unlocker.mixin.spotify;
 
 import gg.norisk.cosmetics.unlocker.Log;
 import gg.norisk.cosmetics.unlocker.spotify.SharedArtwork;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,6 +17,7 @@ public abstract class SpotifyHudShareMixin {
 
     @Inject(method = "shareArtwork", at = @At("HEAD"), cancellable = true, remap = false)
     private void nrc$shareArtwork(String artworkUrl, CallbackInfoReturnable<String> cir) {
+        if (!Features.SONG_COVERS.on()) return;
         try {
             cir.setReturnValue(SharedArtwork.share(artworkUrl));
         } catch (Throwable t) {

@@ -1,6 +1,7 @@
 package gg.norisk.cosmetics.unlocker.cosmetics;
 
 import gg.norisk.cosmetics.unlocker.Log;
+import gg.norisk.cosmetics.unlocker.settings.Features;
 import gg.norisk.cosmetics.v2.manager.NrcCosmeticManager;
 import gg.norisk.cosmetics.v2.manager.NrcEmoteIndex;
 import gg.norisk.cosmetics.v2.model.NrcCosmetic;
@@ -18,22 +19,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * Core unlocker that unlocks all NoRiskClient cosmetics, capes, and emotes client-side.
  */
 public class CosmeticsUnlocker {
-    private static boolean enabled = true;
     private static final Set<UUID> cachedCosmeticIds = ConcurrentHashMap.newKeySet();
     private static final Set<String> cachedEmoteIds = ConcurrentHashMap.newKeySet();
     private static long lastCacheUpdate = 0L;
-
-    public static boolean isEnabled() {
-        return enabled;
-    }
-
-    public static void setEnabled(boolean value) {
-        enabled = value;
-    }
-
-    public static void toggle() {
-        enabled = !enabled;
-    }
 
     /**
      * Retrieves all registered cosmetic IDs from NoRisk's registry.
@@ -116,7 +104,7 @@ public class CosmeticsUnlocker {
      * Injects unlocked items and locally saved outfits into a WardrobeResponse.
      */
     public static void populateWardrobeResponse(WardrobeResponse response) {
-        if (!enabled || response == null) return;
+        if (!Features.COSMETICS.on() || response == null) return;
         try {
             CosmeticUser user = response.getCosmeticUser();
             if (user != null) {

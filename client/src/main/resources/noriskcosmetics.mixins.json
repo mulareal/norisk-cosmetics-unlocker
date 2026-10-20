@@ -9,6 +9,8 @@
     "unlock.ShopUtilsMixin",
     "unlock.CosmeticShowcaseComponentMixin",
     "unlock.ShopEntryComponentMixin",
+    "unlock.AbstractShopContentPanelMixin",
+    "unlock.NewPlayerPreviewPanelMixin",
     "unlock.NrcPermissionCacheMixin",
     "emote.EmoteOwnedListComponentMixin",
     "emote.EmoteSyncBridgeMixin",
@@ -30,7 +32,10 @@
     "icon.CustomIconInfoCompanionMixin",
     "spotify.ArtworkCacheMixin",
     "spotify.SpotifyHudShareMixin",
-    "player.AbstractClientPlayerMixin"
+    "player.AbstractClientPlayerMixin",
+    "texteffect.CachedIncludeSourceMixin",
+    "texteffect.TextEffectRegistryMixin",
+    "texteffect.TextShaderUniformsMixin"
   ],
   "injectors": {
     "defaultRequire": 0

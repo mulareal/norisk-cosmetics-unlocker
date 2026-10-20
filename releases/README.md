@@ -6,7 +6,8 @@ All versions, newest first. The folder is the Minecraft version a jar was built 
 
 | Version | Download | Runs on | Size |
 |---|---|---|---|
-| **1.0.27** (latest) | [norisk-cosmetics-unlocker-1.0.27-mc26.3.jar](mc26.3/norisk-cosmetics-unlocker-1.0.27-mc26.3.jar) | 26.2 - 26.3 | 557 KB |
+| **1.0.28** (latest) | [norisk-cosmetics-unlocker-1.0.28-mc26.3.jar](mc26.3/norisk-cosmetics-unlocker-1.0.28-mc26.3.jar) | 26.2 - 26.3 | 337 KB |
+| 1.0.27 | [norisk-cosmetics-unlocker-1.0.27-mc26.3.jar](mc26.3/norisk-cosmetics-unlocker-1.0.27-mc26.3.jar) | 26.2 - 26.3 | 557 KB |
 | 1.0.26 | [norisk-cosmetics-unlocker-1.0.26-mc26.3.jar](mc26.3/norisk-cosmetics-unlocker-1.0.26-mc26.3.jar) | 26.2 - 26.3 | 552 KB |
 | 1.0.25 | [norisk-cosmetics-unlocker-1.0.25-mc26.3.jar](mc26.3/norisk-cosmetics-unlocker-1.0.25-mc26.3.jar) | 26.2 - 26.3 | 552 KB |
 | 1.0.24 | [norisk-cosmetics-unlocker-1.0.24-mc26.3.jar](mc26.3/norisk-cosmetics-unlocker-1.0.24-mc26.3.jar) | 26.2 - 26.3 | 548 KB |

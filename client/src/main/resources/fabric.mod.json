@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "norisk-cosmetics-unlocker",
+  "version": "${version}",
+  "name": "NoRisk Cosmetics Unlocker",
+  "description": "Unlocks all NoRisk Client cosmetics, including NRC+ features. Works completely client-side.",
+  "authors": [
+    "mulareal"
+  ],
+  "contact": {
+    "homepage": "https://github.com/mulareal/norisk-cosmetics-unlocker",
+    "sources": "https://github.com/mulareal/norisk-cosmetics-unlocker"
+  },
+  "icon": "assets/norisk-cosmetics-unlocker/icon.png",
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "gg.norisk.cosmetics.unlocker.NoRiskCosmeticsClientMod"
+    ]
+  },
+  "mixins": [
+    "noriskcosmetics.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": ">=26.2 <=26.3",
+    "java": ">=25"
+  }
+}

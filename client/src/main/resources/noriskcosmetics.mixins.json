@@ -1,0 +1,38 @@
+{
+  "required": true,
+  "package": "gg.norisk.cosmetics.unlocker.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "unlock.NrcCosmeticPlayerDataMixin",
+    "unlock.WardrobeCacheMixin",
+    "unlock.NewWardrobeContainerMixin",
+    "unlock.ShopUtilsMixin",
+    "unlock.CosmeticShowcaseComponentMixin",
+    "unlock.ShopEntryComponentMixin",
+    "unlock.NrcPermissionCacheMixin",
+    "emote.EmoteOwnedListComponentMixin",
+    "emote.EmoteSyncBridgeMixin",
+    "emote.GeoEmoteManagerMixin",
+    "emote.InteractiveEmoteServiceMixin",
+    "emote.EmoteWheelSyncServiceMixin",
+    "emote.CosmeticSyncServiceMixin",
+    "nametag.NrcCustomNameTagServiceMixin",
+    "nametag.NrcAdditionalNameTagServiceMixin",
+    "nametag.PlusExtraNameTagMixin",
+    "nametag.PlusNameTagLimitMixin",
+    "nametag.NRCPlusModuleMixin",
+    "nametag.NrcTextShaderCacheMixin",
+    "nametag.NoRiskUserMinimalMixin",
+    "nametag.NrcPlayerCacheMixin",
+    "icon.IconSelectorComponentMixin",
+    "icon.NrcCustomIconServiceMixin",
+    "icon.IconResolverMixin",
+    "icon.CustomIconInfoCompanionMixin",
+    "spotify.ArtworkCacheMixin",
+    "spotify.SpotifyHudShareMixin",
+    "player.AbstractClientPlayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

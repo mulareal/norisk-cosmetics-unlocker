@@ -5,7 +5,7 @@
 
   A lightweight Fabric mod for NoRisk Client that unlocks all cosmetics, emotes, badges, and NRC+ perks.
 
-  [**Download .jar**](releases/norisk-cosmetics-unlocker-1.0.25.jar) • [**Installation**](#installation) • [**Commands**](#commands) • [**Screenshots**](#screenshots)
+  [**Download .jar**](releases/norisk-cosmetics-unlocker-1.0.26.jar) • [**Installation**](#installation) • [**Commands**](#commands) • [**Screenshots**](#screenshots)
 </div>
 
 ---
@@ -30,7 +30,7 @@
 - **NRC+ Perks**: Custom crosshair editor, projectile particle trails, and nametag formatting.
 
 ## Installation
-1. Download [`norisk-cosmetics-unlocker-1.0.25.jar`](releases/norisk-cosmetics-unlocker-1.0.25.jar).
+1. Download [`norisk-cosmetics-unlocker-1.0.26.jar`](releases/norisk-cosmetics-unlocker-1.0.26.jar).
 2. Press `Win + R`, paste this path and press Enter:
    ```
    %APPDATA%\norisk\NoRiskClientV3\data\profiles\Fabric 26.2\mods

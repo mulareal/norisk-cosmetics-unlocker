@@ -25,6 +25,7 @@ import org.joml.Vector3f;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -38,6 +39,11 @@ final class CatalogPreviewComponent extends FlowLayout {
 
     /** Previews whose player is registered with NoRisk and the catalog; render thread only. */
     private static final Set<CatalogPreviewComponent> LIVE = new LinkedHashSet<>();
+    /**
+     * NoRisk keeps one offscreen renderer (two GPU textures) per render-state key for a minute. Keys are slots
+     * reused by the cards on screen, not item ids, so scrolling through a thousand items does not pile up renderers.
+     */
+    private static final BitSet SLOTS = new BitSet();
     private static final long IDLE_MS = 1500L;
     private static long lastSweep;
     private static boolean sweeping;
@@ -54,6 +60,7 @@ final class CatalogPreviewComponent extends FlowLayout {
     private float[] shape;
     private boolean mounted;
     private boolean attached;
+    private int slot = -1;
     private long lastTick = System.currentTimeMillis();
     private long lastDrawn;
 
@@ -81,9 +88,13 @@ final class CatalogPreviewComponent extends FlowLayout {
             return Unit.INSTANCE;
         });
         if (view instanceof ICachedElementRenderStateWrapper wrapper) {
-            Object hash = "nrcu-catalog:" + item.id();
             wrapper.setNrc_wrapSpecialElementState((state, matrix, bounds, scissor) -> {
                 NrcEntityElementRenderState renderState = new NrcEntityElementRenderState(state, matrix, bounds, scissor);
+                if (slot < 0) {
+                    slot = SLOTS.nextClearBit(0);
+                    SLOTS.set(slot);
+                }
+                Object hash = "nrcu-catalog:" + slot;
                 renderState.setNrc_hashCode(() -> hash);
                 renderState.setNrc_createRenderer(NrcEntityElementRenderState.Renderer::new);
                 return renderState;
@@ -190,6 +201,10 @@ final class CatalogPreviewComponent extends FlowLayout {
 
     private void untrack() {
         LIVE.remove(this);
+        if (slot >= 0) {
+            SLOTS.clear(slot);
+            slot = -1;
+        }
         if (!attached) return;
         attached = false;
         long id = entity.getNrcEntityId();

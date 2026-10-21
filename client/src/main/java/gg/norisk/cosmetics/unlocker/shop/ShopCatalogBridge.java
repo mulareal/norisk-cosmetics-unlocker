@@ -17,6 +17,16 @@ public interface ShopCatalogBridge {
 
     Identifier icon();
 
+    /** Small-caps tag in each card's footer; blank for none. */
+    default String tag() {
+        return "";
+    }
+
+    /** Shown instead of the grid when no item matches (or the catalog is still loading). */
+    default String emptyText() {
+        return ready() ? "Nichts gefunden" : "Wird geladen ...";
+    }
+
     boolean ready();
 
     List<Item> items();
@@ -43,6 +53,19 @@ public interface ShopCatalogBridge {
 
     /** Empty while loading or ready, otherwise a short error text for the card. */
     String previewError(int id);
+
+    /** Fetches the item's files ahead of its card scrolling into view. */
+    default void prefetch(int id, boolean slim) {
+    }
+
+    /** The locally selected items, in selection order. */
+    default List<Integer> selection() {
+        return List.of();
+    }
+
+    /** Replaces the local selection; an empty list clears it. */
+    default void select(List<Integer> ids) {
+    }
 
     /**
      * @param type name of the NoRisk {@code CosmeticType} the item belongs to in the sidebar

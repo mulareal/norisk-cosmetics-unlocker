@@ -17,6 +17,6 @@ public final class CatalogGroup extends FlexGridLayout {
         super(Sizing.fill(), Sizing.content(), 4, 3, 24, 1.0f);
         allowOverflow(true);
         padding(Insets.bottom(5));
-        for (ShopCatalogBridge.Item item : items) child(new CatalogShopCell(item, this));
+        for (int i = 0; i < items.size(); i++) child(new CatalogShopCell(items, i, this));
     }
 }

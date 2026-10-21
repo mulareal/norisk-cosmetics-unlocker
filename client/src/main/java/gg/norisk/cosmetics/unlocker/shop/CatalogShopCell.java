@@ -6,7 +6,10 @@ import gg.norisk.owolib.owo.ui.container.FlowLayout;
 import gg.norisk.owolib.owo.ui.core.OwoUIGraphics;
 import gg.norisk.owolib.owo.ui.core.Sizing;
 import gg.norisk.ui.modules.v3.V3Theme;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+
+import java.util.List;
 
 /**
  * Grid cell laid out like AbstractShopContentPanel.buildItemCell: one-line title above the card.
@@ -14,13 +17,20 @@ import net.minecraft.network.chat.Component;
  */
 public final class CatalogShopCell extends FlowLayout {
 
+    /** Cards fetched ahead of and behind a cell coming into view: two rows down, one row up. */
+    private static final int AHEAD = 8, BEHIND = 4;
+
     private final ShopCatalogBridge.Item item;
+    private final List<ShopCatalogBridge.Item> group;
+    private final int index;
     private final FlexGridLayout grid;
     private LabelComponent title;
 
-    public CatalogShopCell(ShopCatalogBridge.Item item, FlexGridLayout grid) {
+    public CatalogShopCell(List<ShopCatalogBridge.Item> group, int index, FlexGridLayout grid) {
         super(Sizing.fill(), Sizing.fill(), Algorithm.VERTICAL);
-        this.item = item;
+        this.item = group.get(index);
+        this.group = group;
+        this.index = index;
         this.grid = grid;
         allowOverflow(true);
     }
@@ -31,6 +41,18 @@ public final class CatalogShopCell extends FlowLayout {
         title = new LabelComponent(Component.literal(item.name()).withColor(V3Theme.INSTANCE.gray(12)), 0.75f);
         child(title);
         child(new CatalogShopEntryComponent(item));
+        prefetchNeighbours();
+    }
+
+    /** Lets the neighbours' files download while the user is still looking at this row. */
+    private void prefetchNeighbours() {
+        ShopCatalogBridge bridge = ShopCatalog.get();
+        if (bridge == null) return;
+        var player = Minecraft.getInstance().player;
+        boolean slim = player != null && player.getSkin().model().toString().equalsIgnoreCase("SLIM");
+        for (int i = Math.max(0, index - BEHIND); i <= Math.min(group.size() - 1, index + AHEAD); i++) {
+            if (i != index) bridge.prefetch(group.get(i).id(), slim);
+        }
     }
 
     @Override

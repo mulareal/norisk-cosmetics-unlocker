@@ -22,11 +22,15 @@ public final class CatalogShopEntryComponent extends ShopEntryComponent {
 
         getShowcase().child(new CatalogPreviewComponent(item));
 
-        Component tagText = TextKt.toSmallCapsText(Component.literal("LUNAR").withColor(V3Theme.INSTANCE.accent(8)));
-        LabelComponent tag = new LabelComponent(tagText, 0.55f);
-        tag.shadow(true);
-        getShowcaseFooter().allowOverflow(true);
-        getShowcaseFooter().child(tag);
+        ShopCatalogBridge catalog = ShopCatalog.get();
+        String tagName = catalog == null ? "" : catalog.tag();
+        if (!tagName.isBlank()) {
+            Component tagText = TextKt.toSmallCapsText(Component.literal(tagName).withColor(V3Theme.INSTANCE.accent(8)));
+            LabelComponent tag = new LabelComponent(tagText, 0.55f);
+            tag.shadow(true);
+            getShowcaseFooter().allowOverflow(true);
+            getShowcaseFooter().child(tag);
+        }
 
         getShowcase().mouseDown().subscribe((event, doubled) -> {
             UISounds.playInteractionSound();

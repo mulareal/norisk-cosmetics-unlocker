@@ -3,6 +3,7 @@ package gg.norisk.cosmetics.unlocker.mixin.unlock;
 import gg.norisk.abstraction.text.TextKt;
 import gg.norisk.cosmetics.unlocker.shop.CatalogGroup;
 import gg.norisk.cosmetics.unlocker.shop.CatalogToggleButton;
+import gg.norisk.cosmetics.unlocker.shop.OutfitResetButton;
 import gg.norisk.cosmetics.unlocker.shop.ShopCatalog;
 import gg.norisk.cosmetics.unlocker.shop.ShopCatalogBridge;
 import gg.norisk.cosmetics.v2.ui.ShopDivider;
@@ -33,7 +34,8 @@ import java.util.Map;
 import java.util.Locale;
 
 /**
- * Adds a toggle button for the optional catalog next to the cosmetics filter. While it is
+ * Adds a reset button (take everything off, then undo) and a toggle button for the optional catalog next to the
+ * cosmetics filter. While the catalog is
  * active the catalog is laid out like NoRisk's own page: one divider + grid per sidebar
  * category, registered in {@code categoryDividers} so sidebar clicks scroll to the group
  * and the sidebar follows the scroll position.
@@ -80,8 +82,10 @@ public abstract class AbstractShopContentPanelMixin {
     private void nrc$installCatalogButton(NewWardrobeContainer shop, Sizing horizontalSizing, Sizing verticalSizing, CallbackInfo ci) {
         if (!((Object) this instanceof CosmeticContentPanel)) return;
         ShopCatalogBridge bridge = ShopCatalog.get();
-        if (bridge == null || !bridge.available()) return;
-        leftGroup.child(new CatalogToggleButton(bridge, () -> nrc$catalogMode, () -> nrc$setCatalogMode(!nrc$catalogMode)));
+        if (bridge != null && bridge.available()) {
+            leftGroup.child(new CatalogToggleButton(bridge, () -> nrc$catalogMode, () -> nrc$setCatalogMode(!nrc$catalogMode)));
+        }
+        leftGroup.child(new OutfitResetButton(shop));
     }
 
     /** Search changes end up here; in catalog mode they rebuild the catalog page. */
@@ -144,8 +148,7 @@ public abstract class AbstractShopContentPanelMixin {
             FlowLayout empty = UIContainers.verticalFlow(Sizing.fill(), Sizing.content());
             empty.alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
             empty.padding(Insets.of(12));
-            String message = bridge.ready() ? "Keine Lunar-Cosmetics gefunden" : "Lunar-Katalog wird geladen ...";
-            LabelComponent label = new LabelComponent(TextKt.toSmallCapsText(message), 0.8f);
+            LabelComponent label = new LabelComponent(TextKt.toSmallCapsText(bridge.emptyText()), 0.8f);
             label.setBrightnessMultiplier(0.72f);
             empty.child(label);
             scrollChild.child(empty);

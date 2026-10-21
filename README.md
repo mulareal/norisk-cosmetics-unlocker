@@ -5,7 +5,7 @@
 
   A lightweight Fabric mod for NoRisk Client that unlocks all cosmetics, emotes, badges, and NRC+ perks.
 
-  [**Download .jar**](releases/mc26.3/norisk-cosmetics-unlocker-1.0.37-mc26.3.jar) • [**All versions**](releases/README.md) • [**Installation**](#installation) • [**Commands**](#commands) • [**Screenshots**](#screenshots) • [**Build**](#build)
+  [**Download .jar**](releases/mc26.3/norisk-cosmetics-unlocker-1.0.38-mc26.3.jar) • [**All versions**](releases/README.md) • [**Installation**](#installation) • [**Commands**](#commands) • [**Screenshots**](#screenshots) • [**Build**](#build)
 </div>
 
 ---
@@ -35,7 +35,7 @@
 - **Freeze Watchdog**: Writes a thread dump to `logs/nrc-freeze-*.txt` if the game hangs for 10 s.
 
 ## Installation
-1. Download [`norisk-cosmetics-unlocker-1.0.37-mc26.3.jar`](releases/mc26.3/norisk-cosmetics-unlocker-1.0.37-mc26.3.jar) (Minecraft 26.3). Other Minecraft versions and older releases: [releases](releases/README.md).
+1. Download [`norisk-cosmetics-unlocker-1.0.38-mc26.3.jar`](releases/mc26.3/norisk-cosmetics-unlocker-1.0.38-mc26.3.jar) (Minecraft 26.3). Other Minecraft versions and older releases: [releases](releases/README.md).
 2. Press `Win + R`, paste this path and press Enter (use the name of your NoRisk profile):
    ```
    %APPDATA%\norisk\NoRiskClientV3\data\profiles\Fabric 26.3\mods

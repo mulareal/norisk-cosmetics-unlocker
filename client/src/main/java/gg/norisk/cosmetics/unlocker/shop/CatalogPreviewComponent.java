@@ -164,7 +164,7 @@ final class CatalogPreviewComponent extends FlowLayout {
         switch (type) {
             case "WINGS" -> { pose.scale(1.58f); pose.translate(-0.01f, -0.69f, 0f); }
             case "CAPE" -> { pose.scale(2.9f); pose.translate(-0.01f, -0.58f, 0f); pose.translate(-0.075f, -0.05f, 0f); }
-            case "HAT" -> { pose.scale(2.8f); pose.translate(0f, -0.25f, 0f); pose.translate(0f, -0.9f, 0f); }
+            case "HAT", "BANDANA" -> { pose.scale(2.8f); pose.translate(0f, -0.25f, 0f); pose.translate(0f, -0.9f, 0f); }
             case "PET" -> { pose.scale(2.23f); pose.translate(0.56f, -2.71f, 0f); pose.scale(2.0f); }
             case "BACK" -> { pose.scale(3.5f); pose.translate(-0.15f, -0.65f, 0f); pose.translate(0.15f, 0.375f, 0f); pose.scale(0.6f); }
             case "FACE" -> { pose.scale(2.81f); pose.translate(-0.04f, -0.62f, 0f); pose.translate(-0.4f, -2.0f, 0f); pose.scale(1.5f); }

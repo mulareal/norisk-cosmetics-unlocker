@@ -6,8 +6,11 @@ import gg.norisk.ui.api.module.ModuleCategory;
 import gg.norisk.ui.api.value.Value;
 import net.minecraft.resources.Identifier;
 
-/** "Cosmetics Unlocker" in NoRisk's mod menu: the card turns the whole mod on or off. */
-public final class UnlockerModule extends ToggleModule {
+/**
+ * "Cosmetics Unlocker" in NoRisk's mod menu: the card turns the whole mod on or off. Addons may subclass it
+ * to add their switches below these (see {@link gg.norisk.cosmetics.unlocker.api.ClientAddon#settingsCard()}).
+ */
+public class UnlockerModule extends ToggleModule {
 
     private static final Identifier ICON =
             Identifier.fromNamespaceAndPath(NoRiskCosmeticsClientMod.MOD_ID, "textures/module/unlocker.png");

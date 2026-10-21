@@ -58,8 +58,8 @@ public class NoRiskCosmeticsClientMod implements ClientModInitializer {
         ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> onJoin(client));
         ClientHooks.SETTINGS_CHANGED.register(NoRiskCosmeticsClientMod::onSettingsChanged);
 
-        loadAddons();
-        ToggleModule.register(new UnlockerModule());
+        UnlockerModule card = loadAddons();
+        ToggleModule.register(card != null ? card : new UnlockerModule());
     }
 
     /** Mod version from fabric.mod.json. */
@@ -99,14 +99,18 @@ public class NoRiskCosmeticsClientMod implements ClientModInitializer {
         }
     }
 
-    private static void loadAddons() {
+    /** Starts all addons; returns the first addon's settings card, if any. */
+    private static UnlockerModule loadAddons() {
+        UnlockerModule card = null;
         for (ClientAddon addon : ServiceLoader.load(ClientAddon.class, NoRiskCosmeticsClientMod.class.getClassLoader())) {
             try {
                 addon.init();
+                if (card == null) card = addon.settingsCard();
                 Log.info("Addon loaded: " + addon.name());
             } catch (Throwable t) {
                 Log.warn("Addon " + addon.name() + " failed to start: " + t);
             }
         }
+        return card;
     }
 }

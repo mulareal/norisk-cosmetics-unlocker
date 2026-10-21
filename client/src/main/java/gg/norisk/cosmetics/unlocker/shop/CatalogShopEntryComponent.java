@@ -45,7 +45,7 @@ public final class CatalogShopEntryComponent extends ShopEntryComponent {
             case "WINGS", "AURA" -> CosmeticRarity.LEGENDARY;
             case "PET", "SUIT" -> CosmeticRarity.EPIC;
             case "CAPE", "BACK", "SHIELD" -> CosmeticRarity.RARE;
-            case "HAT", "FACE", "ACCESSORIES" -> CosmeticRarity.UNCOMMON;
+            case "HAT", "FACE", "BANDANA", "ACCESSORIES" -> CosmeticRarity.UNCOMMON;
             default -> CosmeticRarity.COMMON;
         };
     }

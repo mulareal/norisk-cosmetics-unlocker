@@ -41,6 +41,10 @@ public interface ShopCatalogBridge {
     /** Shows the locally selected catalog items on the wardrobe's player preview until detached. */
     void attachOutfitPreview(long entityId);
 
+    /** Shows the catalog items saved with NoRisk outfit {@code outfitId} (hex id) on its outfit card until detached. */
+    default void attachOutfitPreview(long entityId, String outfitId) {
+    }
+
     void detachPreview(long entityId);
 
     /**

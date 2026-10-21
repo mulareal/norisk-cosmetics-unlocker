@@ -4,11 +4,15 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemDisplayContext;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -19,6 +23,12 @@ public final class ClientHooks {
 
     /** The local player's active outfit changed (wardrobe toggle or outfit switch). Client thread. */
     public static final HookList<Runnable> OUTFIT_CHANGED = new HookList<>("outfit_changed");
+
+    /**
+     * The local player switched from one saved outfit to another in the wardrobe (hex outfit ids; the
+     * previous one is null if unknown). Fired before the new one is stored as active. Client thread.
+     */
+    public static final HookList<BiConsumer<String, String>> OUTFIT_SELECTED = new HookList<>("outfit_selected");
 
     /** The local player's nametag (custom or additional) changed and was saved. Client thread. */
     public static final HookList<Runnable> NAMETAG_CHANGED = new HookList<>("nametag_changed");
@@ -47,11 +57,36 @@ public final class ClientHooks {
     /** Handles partner emotes instead of NoRisk's backend when set and {@link PartnerEmoteRouter#isActive()}. */
     public static volatile PartnerEmoteRouter partnerEmotes;
 
+    /**
+     * Replaces a player's cape texture, so cape mods animate it like a normal cape. {@link #NO_CAPE} hides the
+     * cape; {@code null} keeps it. The elytra is drawn with the new cape like with a normal one. Render thread.
+     */
+    public static volatile Function<AbstractClientPlayer, Identifier> capeOverride;
+
+    public static final Identifier NO_CAPE = Identifier.fromNamespaceAndPath("norisk-cosmetics-unlocker", "no_cape");
+
+    /** Draws the shield a player holds in a display context instead of NoRisk or vanilla; {@code null} keeps it. */
+    public static volatile BiFunction<AbstractClientPlayer, ItemDisplayContext, HeldShield> heldShield;
+
     private ClientHooks() {
     }
 
     public static void outfitChanged() {
         OUTFIT_CHANGED.fire(Runnable::run);
+    }
+
+    public static void outfitSelected(String previous, String next) {
+        OUTFIT_SELECTED.fire(listener -> listener.accept(previous, next));
+    }
+
+    /** Hex id of the local player's active saved outfit, or null. */
+    public static String activeOutfitId() {
+        try {
+            var outfit = gg.norisk.cosmetics.unlocker.cosmetics.LocalOutfitStorage.getActiveOutfit();
+            return outfit != null && outfit.getOutfitId() != null ? outfit.getOutfitId().toHexString() : null;
+        } catch (Throwable t) {
+            return null;
+        }
     }
 
     public static void nametagChanged() {

@@ -11,7 +11,7 @@ All code is in `client/src/main/java/gg/norisk/cosmetics/unlocker/`:
 | `compat/` | `CompatCheck`: finds NoRisk hooks that broke after an update |
 | `cosmetics/` | Local storage of outfits, nametags, icons and the emote wheel |
 | `spotify/` | Spotify nametag without the HUD, song covers |
-| `mixin/<feature>/` | Mixins into NoRisk, grouped by feature: `unlock`, `emote`, `nametag`, `icon`, `spotify`, `player` |
+| `mixin/<feature>/` | Mixins into NoRisk, grouped by feature: `unlock`, `emote`, `nametag`, `icon`, `spotify`, `player`, `shield` |
 
 ## Adding a mixin
 
@@ -22,7 +22,7 @@ All code is in `client/src/main/java/gg/norisk/cosmetics/unlocker/`:
 
 ## Extension points
 
-Mixins and core code fire `ClientHooks` (outfit/nametag changed, local emote, player loaded, cover shared, `/nrcu` status lines and subcommands). An addon implements `ClientAddon`, is listed in `META-INF/services/gg.norisk.cosmetics.unlocker.api.ClientAddon` and registers listeners in `init()`. Without addons every hook is a no-op. Listener errors are logged and never reach the caller.
+Mixins and core code fire `ClientHooks` (outfit/nametag changed, outfit selected, local emote, player loaded, cover shared, `/nrcu` status lines and subcommands). Addons can also replace a player's cape texture (`capeOverride`) and the held shield (`heldShield`, drawn by NoRisk's shield renderer), and add a section to the menu card (`ClientAddon.settingsCard`). An addon implements `ClientAddon`, is listed in `META-INF/services/gg.norisk.cosmetics.unlocker.api.ClientAddon` and registers listeners in `init()`. Without addons every hook is a no-op. Listener errors are logged and never reach the caller.
 
 ## Code style
 

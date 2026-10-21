@@ -57,6 +57,9 @@ public abstract class NewWardrobeContainerMixin {
 
     @Inject(method = "selectOutfit", at = @At("TAIL"), remap = false)
     private void onSelectOutfit(CosmeticOutfit nextOutfit, boolean activate, CallbackInfo ci) {
+        if (nextOutfit != null && nextOutfit.getOutfitId() != null) {
+            ClientHooks.outfitSelected(ClientHooks.activeOutfitId(), nextOutfit.getOutfitId().toHexString());
+        }
         if (Features.COSMETICS.on() && nextOutfit != null) {
             try {
                 LocalOutfitStorage.saveOutfit(nextOutfit);

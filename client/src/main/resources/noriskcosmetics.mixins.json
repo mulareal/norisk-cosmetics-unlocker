@@ -33,6 +33,8 @@
     "spotify.ArtworkCacheMixin",
     "spotify.SpotifyHudShareMixin",
     "player.AbstractClientPlayerMixin",
+    "shield.CosmeticItemReplaceModelMixin",
+    "shield.NrcShieldBridgeMixin",
     "texteffect.CachedIncludeSourceMixin",
     "texteffect.TextEffectRegistryMixin",
     "texteffect.TextShaderUniformsMixin"
